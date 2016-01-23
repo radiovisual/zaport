@@ -1,0 +1,66 @@
+{
+  "name": "zaport",
+  "version": "0.0.1",
+  "description": "Gracefully close all processes on a specific port.",
+  "license": "MIT",
+  "repository": "radiovisual/zaport",
+  "author": {
+    "name": "Michael Wuergler",
+    "email": "wuergler@gmail.com",
+    "url": "numetriclabs.com"
+  },
+  "preferGlobal": true,
+  "bin": {
+    "zaport": "cli.js"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "xo && ava --verbose"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "main": "cli.js",
+  "keywords": [
+    "cli-app",
+    "cli",
+    "port",
+    "close",
+    "all",
+    "processes",
+    "zap",
+    "exit",
+    "end",
+    "pid",
+    "zap",
+    "zaport",
+    "zapport"
+  ],
+  "dependencies": {
+    "execa": "^0.2.2",
+    "fkill": "^4.0.0",
+    "list-to-array": "^1.1.0",
+    "meow": "^3.6.0",
+    "multiline": "^1.0.2",
+    "pinky-promise": "^0.1.1",
+    "prompt": "^0.2.14",
+    "sudo-block": "^1.2.0"
+  },
+  "devDependencies": {
+    "asyncawait": "^1.0.2",
+    "ava": "^0.8.0",
+    "noop-server": "0.0.5",
+    "xo": "^0.12.1"
+  },
+  "xo": {
+    "ignores": [
+      "test*.js"
+    ]
+  },
+  "ava": {
+    "verbose": true
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "zaport",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Gracefully close all processes on a specific port.",
   "license": "MIT",
   "repository": "radiovisual/zaport",
@@ -23,7 +23,6 @@
     "index.js",
     "cli.js"
   ],
-  "main": "cli.js",
   "keywords": [
     "cli-app",
     "cli",
@@ -45,12 +44,9 @@
     "list-to-array": "^1.1.0",
     "meow": "^3.6.0",
     "multiline": "^1.0.2",
-    "pinky-promise": "^0.1.1",
-    "prompt": "^0.2.14",
-    "sudo-block": "^1.2.0"
+    "pinky-promise": "^0.1.1"
   },
   "devDependencies": {
-    "asyncawait": "^1.0.2",
     "ava": "^0.8.0",
     "noop-server": "0.0.5",
     "xo": "^0.12.1"

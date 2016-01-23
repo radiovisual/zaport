@@ -1,6 +1,6 @@
 {
   "name": "zaport",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Gracefully close all processes on a specific port.",
   "license": "MIT",
   "repository": "radiovisual/zaport",

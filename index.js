@@ -15,7 +15,7 @@ module.exports = function (port, opts) {
 
 	var cmd = command(port);
 
-	execa.shell(cmd).then(result => {
+	execa.shell(cmd).then(function (result) {
 		var args = listToArray(result.stdout, '\n');
 
 		if (args.length > 0) {

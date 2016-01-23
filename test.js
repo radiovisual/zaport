@@ -13,8 +13,6 @@ test('zaps processes on specified port', t => {
 		console.log('noop port: ', port);
 		cmd = command(port);
 
-
-
 		get(cmd).then(procs => {
 			console.log('before procs: ', procs);
 			t.is(Array.isArray(procs));

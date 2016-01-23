@@ -1,6 +1,6 @@
 {
   "name": "zaport",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Gracefully close all processes on a specific port.",
   "license": "MIT",
   "repository": "radiovisual/zaport",
@@ -45,7 +45,7 @@
     "list-to-array": "^1.1.0",
     "meow": "^3.6.0",
     "multiline": "^1.0.2",
-    "pinky-promise": "^0.1.1"
+    "native-promise-only": "^0.8.1"
   },
   "devDependencies": {
     "ava": "^0.8.0",

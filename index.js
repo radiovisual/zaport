@@ -1,5 +1,6 @@
 'use strict';
 var listToArray = require('list-to-array');
+require('native-promise-only');
 var execa = require('execa');
 var fkill = require('fkill');
 var chalk = require('chalk');

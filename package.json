@@ -1,7 +1,7 @@
 {
   "name": "zaport",
-  "version": "0.0.5",
-  "description": "Gracefully close all processes on a specific port.",
+  "version": "0.0.6",
+  "description": "Gracefully closes all processes on a specific port.",
   "license": "MIT",
   "repository": "radiovisual/zaport",
   "author": {
@@ -39,22 +39,24 @@
     "zapport"
   ],
   "dependencies": {
+    "array-unique": "^0.2.1",
     "chalk": "^1.1.1",
-    "execa": "^0.2.2",
     "fkill": "^4.0.0",
-    "list-to-array": "^1.1.0",
     "meow": "^3.6.0",
     "multiline": "^1.0.2",
-    "native-promise-only": "^0.8.1"
+    "native-promise-only": "^0.8.1",
+    "port-pid": "0.0.6",
+    "selective-whitespace": "^1.0.0"
   },
   "devDependencies": {
     "ava": "^0.8.0",
+    "express": "^4.13.4",
     "noop-server": "0.0.5",
     "xo": "^0.12.1"
   },
   "xo": {
     "ignores": [
-      "test*.js"
+      "test/*.js"
     ]
   },
   "ava": {

@@ -1,48 +1,94 @@
 'use strict';
-var listToArray = require('list-to-array');
-require('native-promise-only');
-var execa = require('execa');
+var arrayUnique = require('array-unique');
+var multiline = require('multiline');
+var pids = require('port-pid');
 var fkill = require('fkill');
 var chalk = require('chalk');
 
-module.exports = function (port, opts) {
-	opts = opts || {};
+require('native-promise-only');
 
-	if (!port) {
+module.exports = function (input, flags) {
+	flags = flags || {};
+
+	if (!input) {
 		showHelp();
-		process.exit(1);
+		process.exit(0);
 	}
 
-	var cmd = command(port);
+	if (isNaN(input)) {
+		throw new TypeError('zaport expects a port number');
+	}
 
-	execa.shell(cmd).then(function (result) {
-		var args = listToArray(result.stdout, '\n');
+	pids(input).then(function (pids) {
+		var allpids = pids.all;
+		var tcppids = pids.tcp;
+		var udppids = pids.udp;
 
-		if (args.length > 0) {
+		var port = input;
+
+		// console.log(pids, flags);
+
+		function which(pid) {
+			return tcppids.indexOf(pid) === -1 ? 'UDP' : 'TCP';
+		}
+
+		var que = [];
+
+		if (flags.a || flags.all) {
+			que = que.concat(allpids);
+		}
+
+		if (flags.t || flags.tcp) {
+			que = que.concat(tcppids);
+		}
+
+		if (flags.u || flags.udp) {
+			que = que.concat(udppids);
+		}
+
+		if (Object.keys(flags).length === 0) {
+			que = que.concat(tcppids);
+		}
+
+		que = arrayUnique(que);
+
+		if (que.length > 0) {
 			console.log('\n', chalk.bgRed(' zapping port: '), port);
 		}
-		args.map(function (pid, index) {
-			console.log(chalk.gray(' └─'), chalk.green('✓'), chalk.gray(' pid: ', pid));
 
-			fkill(parseInt(pid, 10));
+		que.map(function (pid, index) {
+			console.log(chalk.gray(' └─'), chalk.green('✓'), chalk.gray(which(pid)), chalk.gray('pid: ', pid));
 
-			if (++index === args.length) {
+			fkill(parseInt(pid, 10)).then(function () {
+
+			}).catch(function () {
+				console.log(chalk.gray(' └─'), chalk.red('x'), chalk.gray(which(pid)), chalk.gray('pid: ', pid));
+			});
+
+			if (++index === que.length) {
 				console.log('\n');
 			}
 		});
-	}).catch(function (err) {
-		console.log('no processes zapped.\nError: ', err);
 	});
 };
 
-function command(port) {
-	var win = 'FOR /F "tokens=5 delims= " %P IN ("netstat -a -n -o ^| findstr :' + port + '") DO @ECHO %P';
-	var mac = 'lsof -i :' + port + ' | awk \'NR!=1 {print $2}\'';
-
-	return process.platform === 'win32' ? win : mac;
-}
-
 function showHelp() {
-	console.log('Usage');
-	console.log('  $ zaport [port]');
+	console.log(multiline(function () {/*
+
+	 Close all activity on a given port. Only zaps TCP ports by default.
+
+	 Usage
+	   $ zaport <port> <options>
+
+	 Options
+	   -t, --tcp  only zap TCP activity (default)
+	   -u, --udp  only zap UDP activity
+	   -a, --all  zap all TCP/UDP activity
+
+	 Examples
+	   $ zaport 8010 -a
+	   $ zaport 8010 --all
+	   $ zaport 8010 -t
+
+	 */}));
 }

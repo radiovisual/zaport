@@ -6,6 +6,7 @@
 
 # ![zaport](media/screenshot.png)
 
+**Note** This module is currently working for me on my mac, but it [needs unit tests](https://github.com/radiovisual/zaport/issues/2). I don't have time to write them right now, since they are a bit tricky and will take a little research. If you are willing to help out, pull requests are welcome. :sunglasses:   
 
 ## Install
 
@@ -17,16 +18,22 @@ $ npm install --global zaport
 ## Usage
 
 ```
-$ zaport <port>
-```
-## Example
+$ zaport --help
 
-```
-$ zaport 8010
+Close all activity on a given port. Only zaps TCP ports by default.
 
-  zapping port:  8010
-  └─ ×  pid:  18073
+	 Usage
+	   $ zaport <port> <options>
 
+	 Options
+	   -t, --tcp  only zap TCP activity (default)
+	   -u, --udp  only zap UDP activity
+	   -a, --all  zap all TCP/UDP activity
+
+	 Examples
+	   $ zaport 8010 -a
+	   $ zaport 8010 --all
+	   $ zaport 8010 -t
 ```
 
 ## License

@@ -1,12 +1,12 @@
 # zaport 
 
-> Gracefully close all processes on a specific port
+> Gracefully close all processes on a specific port. Target TCP, UDP or both.
 
 [![Build Status](https://travis-ci.org/radiovisual/zaport.svg?branch=master)](https://travis-ci.org/radiovisual/zaport) :zap:
 
 # ![zaport](media/screenshot.png)
 
-**Note** This module is currently working for me on my mac, but it [needs unit tests](https://github.com/radiovisual/zaport/issues/2). I don't have time to write them right now, since they are a bit tricky and will take a little research. If you are willing to help out, pull requests are welcome. :sunglasses:   
+**Note** This module is currently working for me on my mac, but currently, a [bug is keeping it from running on windows](https://github.com/radiovisual/zaport/issues/1) and it [needs unit tests](https://github.com/radiovisual/zaport/issues/2). I don't have time to focus on these issues right now, so if you are willing to help out, pull requests are welcome. :sunglasses:   
 
 ## Install
 
@@ -34,6 +34,15 @@ Close all activity on a given port. Only zaps TCP ports by default.
 	   $ zaport 8010 -a
 	   $ zaport 8010 --all
 	   $ zaport 8010 -t
+```
+
+## Note
+
+Because `zaport` targets TCP by default, all three of these commands are the same: 
+```
+$ zaport 8010
+$ zaport 8010 --tcp
+$ zaport 8010 -t
 ```
 
 ## License

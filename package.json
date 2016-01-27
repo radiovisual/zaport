@@ -1,7 +1,7 @@
 {
   "name": "zaport",
-  "version": "0.0.6",
-  "description": "Gracefully closes all processes on a specific port.",
+  "version": "0.0.7",
+  "description": "Gracefully closes all processes on a specific port. Target TCP, UDP or both.",
   "license": "MIT",
   "repository": "radiovisual/zaport",
   "author": {
@@ -36,7 +36,15 @@
     "pid",
     "zap",
     "zaport",
-    "zapport"
+    "zapport",
+    "kill",
+    "process",
+    "tcp",
+    "udp",
+    "socket",
+    "network",
+    "terminal",
+    "node"
   ],
   "dependencies": {
     "array-unique": "^0.2.1",

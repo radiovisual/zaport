@@ -11,8 +11,12 @@ test.beforeEach(t => {
 
 // TODO: Actually write some meaningful tests!
 // https://github.com/radiovisual/zaport/issues/2
-test('zaps tcp processes on specified port', t => {
-	zaport(t.context.port, {t:true, tcp:true});
+test('default: zaps tcp processes on specified port', t => {
+	t.true(false);
+});
+
+test('does not zap ports in list mode', t => {
+	t.true(false);
 });
 
 test.afterEach(t => {

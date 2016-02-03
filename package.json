@@ -1,6 +1,6 @@
 {
   "name": "zaport",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Gracefully closes all processes on a specific port. Target TCP, UDP or both.",
   "license": "MIT",
   "repository": "radiovisual/zaport",

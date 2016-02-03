@@ -34,6 +34,11 @@ module.exports = function (input, flags) {
 
 		var que = [];
 
+		if (flags.l || flags.list) {
+			listPids(tcppids, udppids, port);
+			return;
+		}
+
 		if (flags.a || flags.all) {
 			que = que.concat(allpids);
 		}
@@ -81,9 +86,10 @@ function showHelp() {
 	   $ zaport <port> <options>
 
 	 Options
-	   -t, --tcp  only zap TCP activity (default)
-	   -u, --udp  only zap UDP activity
-	   -a, --all  zap all TCP/UDP activity
+	   -t, --tcp   only zap TCP activity (default)
+	   -u, --udp   only zap UDP activity
+	   -a, --all   zap all TCP/UDP activity
+	   -l, --list  list the pids without zapping
 
 	 Examples
 	   $ zaport 8010 -a
@@ -91,4 +97,15 @@ function showHelp() {
 	   $ zaport 8010 -t
 
 	 */}));
+}
+
+function listPids(tcp, udp, port) {
+	console.log('\n', chalk.bgRed(' non-zap pid listing: '), port);
+	tcp.forEach(function (item) {
+		console.log(chalk.gray(' └─'), chalk.green('TCP'), chalk.gray('pid: '), chalk.white(item));
+	});
+	udp.forEach(function (item) {
+		console.log(chalk.gray(' └─'), chalk.yellow('UDP'), chalk.gray('pid: '), chalk.white(item));
+	});
+	console.log('\n');
 }

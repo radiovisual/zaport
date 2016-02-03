@@ -26,23 +26,31 @@ Close all activity on a given port. Only zaps TCP ports by default.
 	   $ zaport <port> <options>
 
 	 Options
-	   -t, --tcp  only zap TCP activity (default)
-	   -u, --udp  only zap UDP activity
-	   -a, --all  zap all TCP/UDP activity
-
+	   -t, --tcp   only zap TCP activity (default)
+	   -u, --udp   only zap UDP activity
+	   -a, --all   zap all TCP/UDP activity
+       -l, --list  lists the pids without zapping
+       
 	 Examples
 	   $ zaport 8010 -a
 	   $ zaport 8010 --all
 	   $ zaport 8010 -t
 ```
 
-## Note
+## Notes
 
 Because `zaport` targets TCP by default, all three of these commands are the same: 
 ```
 $ zaport 8010
 $ zaport 8010 --tcp
 $ zaport 8010 -t
+```
+
+If you want to get a list of pids running on the port **without zapping the activity**, use `-l` or `--list`:
+
+```
+$ zaport 8010 --list
+$ zaport 8010 -l
 ```
 
 ## License
